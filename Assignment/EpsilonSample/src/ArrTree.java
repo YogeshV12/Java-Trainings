@@ -56,6 +56,34 @@ public class ArrTree {
             inorderRec(root.right);
         }
     }
+
+    void Preorder()
+    {
+         PreorderRec(root);
+    }
+	
+    void preorderRec(Node root)
+    {
+        if (root != null) {
+            System.out.println(root.key);
+            inorderRec(root.left);
+            inorderRec(root.right);
+        }
+    }
+    
+    void postorder()
+    {
+         postorderRec(root);
+    }
+	
+    void postorderRec(Node root)
+    {
+        if (root != null) {
+            inorderRec(root.left);
+            inorderRec(root.right);
+            System.out.println(root.key);
+        }
+    
     
     public static void main(String[] args)
     {
