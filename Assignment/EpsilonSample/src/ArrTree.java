@@ -83,6 +83,16 @@ public class ArrTree {
             inorderRec(root.right);
             System.out.println(root.key);
         }
+    }
+	
+    public Node BstSearch(Node root, int data)
+    {
+        if (root==null || root.key==data)
+            return root;
+        if (root.key < data)
+            return BstSearch(root.right, data);
+        return BstSearch(root.left, data);
+    }
     
     
     public static void main(String[] args)
