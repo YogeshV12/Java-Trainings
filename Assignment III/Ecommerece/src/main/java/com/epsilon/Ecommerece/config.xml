@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- Authors -->
+
+
+
+	<bean name="author" class="com.epsilon.Ecommerece.Author">
+
+		<constructor-arg value="12"></constructor-arg>
+		<constructor-arg value="author1"></constructor-arg>
+
+	</bean>
+
+	<bean name="author2" class="com.epsilon.Ecommerece.Author">
+
+		<constructor-arg value="13"></constructor-arg>
+		<constructor-arg value="author2"></constructor-arg>
+
+	</bean>
+
+	<!-- Customers -->
+
+	<bean name="customer1" class="com.epsilon.Ecommerece.Customer">
+		<constructor-arg value="12"></constructor-arg>
+		<constructor-arg value="customer1"></constructor-arg>
+
+	</bean>
+
+	<bean name="customer2" class="com.epsilon.Ecommerece.Customer">
+		<constructor-arg value="13"></constructor-arg>
+		<constructor-arg value="customer2"></constructor-arg>
+
+	</bean>
+
+
+
+
+
+	<!-- publisher -->
+
+
+
+
+
+	<bean name="publisher" class="com.epsilon.Ecommerece.Publisher">
+
+		<property name="publisherId" value="10"></property>
+		<property name="name" value="publsiher 1"></property>
+		<property name="location" value="London"></property>
+
+	</bean>
+
+
+
+	<bean name="publisher2" class="com.epsilon.Ecommerece.Publisher">
+
+		<property name="publisherId" value="20"></property>
+		<property name="name" value="publsiher 2"></property>
+		<property name="location" value="India"></property>
+
+	</bean>
+
+
+	<!-- books -->
+
+	<bean name="book1" class="com.epsilon.Ecommerece.Book" autowire="byName">
+		<property name="bookId" value="1"></property>
+		<property name="BookName" value="phy"></property>
+		<property name="language" value="eng"></property>
+<!-- 		<property name="publisher"><ref bean="publisher1"></ref></property>
+		<property name="author"><ref bean="author1"></ref></property> -->
+		<property name="price" value="200"></property>
+	</bean>
+
+	<bean name="book2" class="com.epsilon.Ecommerece.Book">
+		<property name="bookId" value="2"></property>
+		<property name="BookName" value="chem"></property>
+		<property name="language" value="eng"></property>
+		<property name="publisher"><ref bean="publisher2"></ref></property>
+		<property name="author"><ref bean="author2"></ref></property>
+		<property name="price" value="300"></property>
+	</bean>
+
+
+
+	<!-- orders -->
+
+
+
+	<bean name="order1" class="com.epsilon.Ecommerece.Order">
+		<property name="orderId" value="20"></property>
+		<property name="UserId" value="30"></property>
+	</bean>
+
+	<bean name="order2" class="com.epsilon.Ecommerece.Order">
+		<property name="orderId" value="22"></property>
+		<property name="UserId" value="50"></property>
+		<property name="book">
+
+			<list>
+
+				<ref bean="book1"></ref>
+
+				<ref bean="book2"></ref>
+
+			</list>
+		</property>
+	</bean>
+
+	<bean name="order3" class="com.epsilon.Ecommerece.Order">
+		<property name="orderId" value="52"></property>
+		<property name="UserId" value="90"></property>
+	</bean>
+
+	<bean name="order4" class="com.epsilon.Ecommerece.Order">
+		<property name="orderId" value="452"></property>
+		<property name="UserId" value="110"></property>
+	</bean>
+
+	<bean name="order-items1"
+		class="com.epsilon.Ecommerece.OrderItems">
+		<property name="orderId" value="1"></property>
+		<property name="lo">
+
+			<list>
+
+				<ref bean="order1"></ref>
+
+				<ref bean="order2"></ref>
+
+				<ref bean="order3"></ref>
+
+				<ref bean="order4"></ref>
+
+			</list>
+		</property>
+
+	</bean>
+</beans>
